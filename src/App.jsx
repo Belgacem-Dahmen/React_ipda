@@ -1,32 +1,31 @@
+import React, { useEffect } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import Login from "../src/pages/Auth/Login";
+import Register from "../src/pages/Auth/Register";
+import LandingPage from '../src/pages/LandingPage';
+import ForgotPassword from '../src/pages/Auth/ForgotPassword'
+import "../src/app.css";
 
-import './App.css'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import GuestLayout from "./layouts/GuestLayout"
-import Login from './pages/Auth/Login';
-import Register from './pages/Auth/Register';
-import ForgotPassword from './pages/Auth/ForgotPassword'
-import AuthLayout from './layouts/AuthLayout';
-function App() {
-  
+
+const App = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const User = localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : localStorage.clear();
+
+    if (!User) navigate('/login');
+  }, []);
 
   return (
-    <BrowserRouter>
     <Routes>
-      <Route path="/" element={<GuestLayout />}>
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
-        <Route path="forgot" element={<ForgotPassword />} />
-       </Route>
+      
+      <Route path="/" element={<LandingPage />} />
+      <Route path="login" element={<Login />} />
+      <Route path="register" element={<Register />} />
+      <Route path="forgot" element={<ForgotPassword />} /> 
 
-       <Route path="/dashboard" element={<AuthLayout />}>
-        <Route path="users" element={<Login />} />
-        <Route path="demandes" element={<Register />} />
-        <Route path="services" element={<ForgotPassword />} />
-       </Route>
     </Routes>
+  );
+};
 
-  </BrowserRouter>
-    )
-}
-
-export default App
+export default App;

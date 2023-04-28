@@ -3,14 +3,18 @@ import Header from "../components/Header";
 
 
 
-function AuthLayout() {
+export default function AuthLayout() {
   
 
     return (
+      <>
       <div className="bg-white">
+       
+      <Header isAuth={true}/>
       <Outlet />
       </div>
+  </>
     )
   }
   
-  export default AuthLayout
+   
