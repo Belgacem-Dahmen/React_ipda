@@ -6,13 +6,14 @@ function GuestLayout() {
   
 
     return (
-        
+       
         <div className="bg-white">
-            guest
+           
         <Header isAuth={true}/>
         <Outlet />
+        
         </div>
- 
+        
     )
   }
   

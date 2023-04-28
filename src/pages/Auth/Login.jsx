@@ -36,7 +36,6 @@ export default function Login() {
 
     return (
         <>
-        <Header isAuth={true}/>
        <div className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8 shadow-sm	">
           <div className="sm:mx-auto sm:w-full sm:max-w-md">
             <img

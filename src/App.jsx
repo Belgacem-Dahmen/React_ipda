@@ -5,6 +5,7 @@ import Register from "../src/pages/Auth/Register";
 import LandingPage from '../src/pages/LandingPage';
 import ForgotPassword from '../src/pages/Auth/ForgotPassword'
 import "../src/app.css";
+import GuestLayout from './layouts/GuestLayout';
 
 
 const App = () => {
@@ -18,13 +19,14 @@ const App = () => {
 
   return (
     <Routes>
-      
-      <Route path="/" element={<LandingPage />} />
-      <Route path="login" element={<Login />} />
-      <Route path="register" element={<Register />} />
-      <Route path="forgot" element={<ForgotPassword />} /> 
+    <Route element={<GuestLayout />}>
+          <Route path='/' element={<LandingPage />}/>
+          <Route path='login' element={<Login />}/>
+          <Route path='register' element={<Register />}/>
+          <Route path='forgot' element={<ForgotPassword />}/>
+          </Route>
 
-    </Routes>
+  </Routes>
   );
 };
 
